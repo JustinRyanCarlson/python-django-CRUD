@@ -1,0 +1,14 @@
+{% extends 'myapp/base.html.djt' %}
+
+{% block page_title %}Create Snippet{% endblock %}
+
+{% block content %}
+    <form action="{% url 'snippets:create' %}" method="POST">
+        <label>Title</label><input name=title>
+        <label>Description</label><input name=description>
+        <label>Snippet</label><input name=snippet>
+        <label>Language</label><input name=lang>
+        <button type="submit">Save</button>
+        {% csrf_token %}
+    </form>
+{% endblock %}

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Django CRUD</title>
+</head>
+
+<body>
+    <h1> {% block page_title %}{% endblock %}</h1>
+    <hr>
+    {% block content %}
+    {% endblock %}
+</body>
+
+</html>
