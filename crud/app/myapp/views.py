@@ -1,9 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Snippet
-
+from django.shortcuts import redirect
+from django.http import JsonResponse
 
 # Create your views here.
+
+
 def read(request):
     snippets = Snippet.objects.all()
     context = {'snippets': snippets}
@@ -18,13 +21,15 @@ def create(request):
             snippet=request.POST['snippet'],
             lang=request.POST['lang']
         ).save()
+        return redirect('/read/')
 
-    return render(request, 'myapp/read.html.djt', {})
 
 # def update
 
 
 def delete(request, snippet_id):
-    print(request.method)
     if request.method == 'DELETE':
-        return render(request, 'myapp/read.html.djt', {})
+        Snippet(id=snippet_id).delete()
+        return JsonResponse({'result': 'done'})
+    else:
+        return JsonResponse({'result': 'done'})

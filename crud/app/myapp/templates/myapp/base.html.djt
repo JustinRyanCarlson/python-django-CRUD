@@ -44,7 +44,6 @@
                 var cookies = document.cookie.split(';');
                 for (var i = 0; i < cookies.length; i++) {
                     var cookie = jQuery.trim(cookies[i]);
-                    // Does this cookie string begin with the name we want?
                     if (cookie.substring(0, name.length + 1) == (name + '=')) {
                         cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                         break;
@@ -56,12 +55,15 @@
         var csrftoken = getCookie('csrftoken');
 
         $(document).on('click', '.delete', function(){
-            var url = "/delete/" + $(this).attr("data-id")
+            var url = "/delete/" + $(this).attr("data-id");
 
             $.ajax({
                 url: url,
                 type: 'DELETE',
-                headers: { "X-CSRFToken": csrftoken }
+                headers: { "X-CSRFToken": csrftoken },
+                success: function(data) {
+                    window.location = '/read/';
+                }
             });
         });
     </script>
