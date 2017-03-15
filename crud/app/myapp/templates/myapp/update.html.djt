@@ -1,12 +1,45 @@
 {% extends 'myapp/base.html.djt' %}
 
 {% block content %}
-    {% for snippet in snippets %}
-        {{snippet.title}}
-        {{snippet.id}}
-        {{snippet.description}}
-        {{snippet.lang}}
-        {{snippet.snippet}}
-        <hr />
-    {% endfor %}
+    <h1 class="text-center">Update Snippet</h1>
+    <hr />
+    <div class="row">
+        {% for snippet in snippets %}
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">{{snippet.title}}</div>
+                    <div class="panel-body">
+                        <div class="col-sm-12">
+                            <p>Description: {{snippet.description}}</p>
+                            <p>Language: {{snippet.lang}}</p>
+                            <p>Snippet: {{snippet.snippet}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+    
+        <form action="" method="POST">
+            <div class="form-group"> 
+                <label>Title</label>
+                <input class="form-control" type="text" name=title value={{snippet.title}}>
+            </div>
+            <div class="form-group"> 
+                <label>Description</label>
+                <input class="form-control" type="text" name=description value={{snippet.description}}>
+            </div>
+            <div class="form-group">
+                <label>Snippet</label> 
+                <input class="form-control" type="text" name=snippet value={{snippet.snippet}}>
+            </div>
+            <div class="form-group">
+                <label>Language</label>
+                <input class="form-control" type="text" name=lang value={{snippet.lang}}>
+            </div>
+            <button class="btn btn-success pull-right" type="submit">Save Edit</button>
+            {% csrf_token %}
+        </form>
+        <br />
+        {% endfor %}
+    </div>    
 {% endblock %} 

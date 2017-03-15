@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-default">
+    <nav class="navbar-top navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">Django CRUD</a>
@@ -23,7 +23,7 @@
                 </div>
             </div>
         </div>
-    <footer class="navbar-default navbar-bottom">
+    <footer class="navbar-default navbar-fixed-bottom">
         <div class="container">
             <div class="row">
                 <div style="color: white" class="col-sm-12">
@@ -55,7 +55,7 @@
         var csrftoken = getCookie('csrftoken');
 
         $(document).on('click', '.delete', function(){
-            var url = "/delete/" + $(this).attr("data-id");
+            var url = "/delete/" + $(this).attr("data-id") + "/";
 
             $.ajax({
                 url: url,
@@ -63,6 +63,19 @@
                 headers: { "X-CSRFToken": csrftoken },
                 success: function(data) {
                     window.location = '/read/';
+                }
+            });
+        });
+
+        $(document).on('click', '.update', function(){
+            var url = "/update/" + $(this).attr("data-id") + "/";
+
+            $.ajax({
+                url: url,
+                type: 'GET',
+                headers: { "X-CSRFToken": csrftoken },
+                success: function(data) {
+                    window.location = url ;
                 }
             });
         });
