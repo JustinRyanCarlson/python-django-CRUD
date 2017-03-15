@@ -1,12 +1,12 @@
 {% extends 'myapp/base.html.djt' %}
 
-{% block page_title %}
-Home page 
-{% endblock %}
-
 {% block content %}
     {% for snippet in snippets %}
         {{snippet.title}}
+        {{snippet.id}}
+        {{snippet.description}}
+        {{snippet.lang}}
+        {{snippet.snippet}}
+        <hr />
     {% endfor %}
-    {{snippet.title}}
 {% endblock %} 

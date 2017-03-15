@@ -4,10 +4,10 @@ from .models import Snippet
 
 
 # Create your views here.
-def home(request):
+def read(request):
     snippets = Snippet.objects.all()
     context = {'snippets': snippets}
-    return render(request, 'myapp/home.html.djt', context)
+    return render(request, 'myapp/read.html.djt', context)
 
 
 def create(request):

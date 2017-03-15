@@ -1,0 +1,12 @@
+{% extends 'myapp/base.html.djt' %}
+
+{% block content %}
+    {% for snippet in snippets %}
+        {{snippet.title}}
+        {{snippet.id}}
+        {{snippet.description}}
+        {{snippet.lang}}
+        {{snippet.snippet}}
+        <hr />
+    {% endfor %}
+{% endblock %} 
