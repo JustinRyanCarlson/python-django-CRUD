@@ -19,4 +19,12 @@ def create(request):
             lang=request.POST['lang']
         ).save()
 
-    return render(request, 'myapp/create.html.djt', {})
+    return render(request, 'myapp/read.html.djt', {})
+
+# def update
+
+
+def delete(request, snippet_id):
+    print(request.method)
+    if request.method == 'DELETE':
+        return render(request, 'myapp/read.html.djt', {})

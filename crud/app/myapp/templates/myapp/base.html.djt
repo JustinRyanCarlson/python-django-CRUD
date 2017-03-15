@@ -13,18 +13,58 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">Django CRUD</a>
             </div>
-            <ul class="nav navbar-nav">
-                <li><a href="/create">Create</a></li>
-                <li><a href="/read">Read</a></li>
-                <li><a href="/update">Update</a></li>
-                <li><a href="/delete">Delete</a></li>
-            </ul>
         </div>
     </nav>
-    <div class="container">
-        {% block content %}
-        {% endblock %}
-    </div>
+        <div>
+            <div>
+                <div class="container">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    <footer class="navbar-default navbar-bottom">
+        <div class="container">
+            <div class="row">
+                <div style="color: white" class="col-sm-12">
+                    <p class="pull-right" style="margin-top: 10px">Justin Carlson &copy; 2017</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous">
+    </script>
+    <script>
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }   
+        var csrftoken = getCookie('csrftoken');
+
+        $(document).on('click', '.delete', function(){
+            var url = "/delete/" + $(this).attr("data-id")
+
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                headers: { "X-CSRFToken": csrftoken }
+            });
+        });
+    </script>
 </body>
 
 </html>
