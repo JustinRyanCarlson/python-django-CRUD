@@ -8,7 +8,7 @@
             <div class="col-sm-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">{{snippet.title}}</div>
-                    <div class="panel-body">
+                    <div class="panel-body" style="word-break: break-all">
                         <div class="col-sm-12">
                             <p>Description: {{snippet.description}}</p>
                             <p>Language: {{snippet.lang}}</p>
@@ -30,7 +30,7 @@
             </div>
             <div class="form-group">
                 <label>Snippet</label> 
-                <input class="form-control" type="text" name=snippet value={{snippet.snippet}}>
+                <textarea rows="5" class="form-control" type="text" name=snippet>{{snippet.snippet}}</textarea>
             </div>
             <div class="form-group">
                 <label>Language</label>

@@ -23,6 +23,7 @@
                 </div>
             </div>
         </div>
+        <div style="min-height: 75px"></div>
     <footer class="navbar-default navbar-fixed-bottom">
         <div class="container">
             <div class="row">
