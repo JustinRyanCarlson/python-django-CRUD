@@ -1,1 +1,1 @@
-# python-django-CRUD
+# Simple Python/Django CRUD web application
